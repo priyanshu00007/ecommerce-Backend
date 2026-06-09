@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { cursor: none; }
+  body { overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 0; background: transparent; }
+  ::selection { @apply bg-aura-sage text-aura-bg; }
+}
+
+@layer utilities {
+  .animate-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

@@ -332,17 +332,17 @@ export default function Home({ openQuickView }) {
           <span className="text-xs uppercase tracking-widest text-white/50 font-bold hidden md:block">Hover to explore</span>
         </div>
         <div className="relative w-full h-[80vh] bg-stone-900 overflow-hidden rounded-3xl">
-          <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80" alt="Editorial" className="w-full h-full object-cover opacity-80" />
+          <img src=" /images/prod.jpg" alt="Editorial" className="w-full h-full object-cover opacity-80" />
           {hotspots.map((spot) => spot.product && (
             <div key={spot.id}
-              className="absolute hotspot w-8 h-8 -ml-4 -mt-4 cursor-pointer"
+              className="absolute hotspot w-8 h-8 md:w-8 md:h-8 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-50 pointer-events-auto"
               style={{ top: spot.top, left: spot.left }}
               onMouseEnter={() => setActiveHotspot(spot.id)}
               onMouseLeave={() => setActiveHotspot(null)}
               onClick={() => openQuickView(spot.product)}
             >
               <div className="w-full h-full bg-white rounded-full flex items-center justify-center animate-pulse">
-                <div className="w-2 h-2 bg-black rounded-full" />
+                <div className="w-1 h-1 md:w-2 md:h-2 bg-black rounded-full" />
               </div>
               <AnimatePresence>
                 {activeHotspot === spot.id && (

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <radialGradient id="rg3" cx="40%" cy="60%" r="60%">
+      <stop offset="0%" stop-color="#1A2B22"/>
+      <stop offset="100%" stop-color="#0A0A0A"/>
+    </radialGradient>
+    <linearGradient id="wg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7BA389" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#7BA389" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#7BA389" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F9F8F4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#F9F8F4" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#F9F8F4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <rect width="1920" height="1080" fill="url(#rg3)"/>
+  <rect x="200" y="100" width="1520" height="880" fill="url(#wg3)"/>
+  <path d="M300 800 Q960 200 1620 800" stroke="#7BA389" stroke-width="0.8" fill="none" opacity="0.15"/>
+  <path d="M350 840 Q960 280 1570 840" stroke="#7BA389" stroke-width="0.5" fill="none" opacity="0.1"/>
+  <path d="M400 870 Q960 350 1520 870" stroke="#7BA389" stroke-width="0.3" fill="none" opacity="0.06"/>
+  <path d="M250 760 Q960 150 1670 760" stroke="#7BA389" stroke-width="0.8" fill="none" opacity="0.08"/>
+  <g opacity="0.08">
+    <rect x="680" y="240" width="560" height="720" rx="1" fill="none" stroke="#7BA389" stroke-width="0.5"/>
+    <rect x="700" y="260" width="520" height="680" rx="1" fill="none" stroke="#7BA389" stroke-width="0.3"/>
+  </g>
+  <path d="M680 600 L1240 600" stroke="#7BA389" stroke-width="0.3" opacity="0.08"/>
+  <path d="M960 240 L960 960" stroke="#7BA389" stroke-width="0.3" opacity="0.06"/>
+  <circle cx="960" cy="540" r="160" fill="none" stroke="#7BA389" stroke-width="0.5" opacity="0.08">
+    <animate attributeName="r" values="160;180;160" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.08;0.15;0.08" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="960" cy="540" r="240" fill="none" stroke="#7BA389" stroke-width="0.3" opacity="0.05">
+    <animate attributeName="r" values="240;260;240" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <path d="M840 400 L1080 400 M840 410 L1080 410 M840 420 L1080 420" stroke="#7BA389" stroke-width="0.3" opacity="0.06"/>
+  <path d="M840 680 L1080 680 M840 690 L1080 690 M840 700 L1080 700" stroke="#7BA389" stroke-width="0.3" opacity="0.06"/>
+  <rect x="400" y="140" width="1120" height="800" fill="url(#shine)" opacity="0.5"/>
+</svg>

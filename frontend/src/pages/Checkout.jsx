@@ -124,7 +124,7 @@ export default function Checkout() {
               {items.map((item) => (
                 <div key={item.id} className="flex gap-4">
                   <div className="w-16 h-20 bg-aura-clay rounded-lg overflow-hidden shrink-0">
-                    <img src={item.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=200'} className="w-full h-full object-cover" />
+                    <img src={item.image_url || '/images/product.svg'} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex-1">
                     <h4 className="display-font text-lg text-aura-primary">{item.name}</h4>

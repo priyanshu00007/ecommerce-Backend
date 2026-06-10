@@ -1,54 +1,74 @@
 const pool = require('../config/db');
+const { paymentQueue, emailQueue } = require('../config/queue');
+const logger = require('../config/logger');
 
 exports.processPayment = async (req, res) => {
-  const connection = await pool.getConnection();
   try {
-    await connection.beginTransaction();
-
     const { order_id, method } = req.body;
 
-    const [orders] = await connection.query(
+    const [orders] = await pool.query(
       'SELECT * FROM orders WHERE id = ? AND user_id = ?',
       [order_id, req.user.id]
     );
 
     if (orders.length === 0) {
-      await connection.rollback();
       return res.status(404).json({ message: 'Order not found' });
     }
 
     if (orders[0].status === 'cancelled') {
-      await connection.rollback();
       return res.status(400).json({ message: 'Cannot pay for a cancelled order' });
     }
 
-    const [existing] = await connection.query(
+    const [existing] = await pool.query(
       'SELECT id FROM payments WHERE order_id = ? AND status = ?',
       [order_id, 'completed']
     );
 
     if (existing.length > 0) {
-      await connection.rollback();
       return res.status(400).json({ message: 'Order already paid' });
     }
 
-    await connection.query(
-      'INSERT INTO payments (order_id, amount, method, status) VALUES (?, ?, ?, ?)',
-      [order_id, orders[0].total_amount, method, 'completed']
-    );
+    const job = await paymentQueue.add('process_payment', {
+      order_id,
+      user_id: req.user.id,
+      method,
+      amount: orders[0].total_amount,
+    }, {
+      attempts: 3,
+      backoff: { type: 'exponential', delay: 2000 },
+    });
 
-    await connection.query(
-      'UPDATE orders SET status = ? WHERE id = ?',
-      ['confirmed', order_id]
-    );
+    await emailQueue.add('order_confirmation', {
+      type: 'order_confirmation',
+      to: req.user.email,
+      data: { order_id, amount: orders[0].total_amount },
+    });
 
-    await connection.commit();
-    res.json({ message: 'Payment successful', order_id });
+    logger.info(`Payment queued for order ${order_id}`, { jobId: job.id });
+
+    res.json({
+      message: 'Payment is being processed',
+      jobId: job.id,
+      order_id,
+    });
   } catch (err) {
-    await connection.rollback();
-    res.status(500).json({ message: 'Server error', error: err.message });
-  } finally {
-    connection.release();
+    logger.error('Payment processing error', { error: err.message });
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getPaymentStatus = async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = await paymentQueue.getJob(jobId);
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+    const state = await job.getState();
+    const returnValue = job.returnvalue;
+    res.json({ jobId, state, result: returnValue });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
@@ -63,6 +83,6 @@ exports.getPaymentByOrder = async (req, res) => {
     }
     res.json(payments[0]);
   } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
+    res.status(500).json({ message: 'Server error' });
   }
 };

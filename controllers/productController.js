@@ -93,6 +93,23 @@ exports.create = async (req, res) => {
   }
 };
 
+exports.uploadImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image uploaded' });
+    }
+    const { uploadToCloudinary } = require('../middleware/upload');
+    const result = await uploadToCloudinary(req.file.buffer);
+    res.json({
+      message: 'Image uploaded',
+      image_url: result.secure_url,
+      public_id: result.public_id,
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Upload failed', error: err.message });
+  }
+};
+
 exports.update = async (req, res) => {
   try {
     const { name, description, price, stock, category_id, image_url } = req.body;

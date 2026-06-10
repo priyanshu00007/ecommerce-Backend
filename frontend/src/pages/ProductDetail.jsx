@@ -55,7 +55,7 @@ export default function ProductDetail() {
         <div className="flex flex-col md:flex-row gap-16 md:gap-24 mb-32">
           <div className="w-full md:w-1/2">
             <div className="aspect-[3/4] bg-aura-clay rounded-t-[4rem] overflow-hidden">
-              <img src={product.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600'} alt={product.name}
+              <img src={product.image_url || '/images/product.svg'} alt={product.name}
                 className="w-full h-full object-cover" />
             </div>
           </div>

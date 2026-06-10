@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8C9A84"/>
+      <stop offset="100%" style="stop-color:#2D3A31"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#g)"/>
+  <circle cx="300" cy="350" r="120" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <circle cx="300" cy="350" r="80" fill="rgba(255,255,255,0.05)"/>
+  <line x1="200" y1="530" x2="400" y2="530" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="300" y="560" font-family="'Playfair Display', serif" font-size="18" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="4">PRODUCT</text>
+</svg>

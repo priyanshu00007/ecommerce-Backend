@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <radialGradient id="rg2" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#2A1F1A"/>
+      <stop offset="100%" stop-color="#0A0A0A"/>
+    </radialGradient>
+    <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C4956A" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#C4956A" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#C4956A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <rect width="1920" height="1080" fill="url(#rg2)"/>
+  <rect x="0" y="200" width="1920" height="400" fill="url(#wg2)"/>
+  <path d="M0 540 Q480 440 960 540 Q1440 640 1920 540" stroke="#C4956A" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M0 560 Q480 460 960 560 Q1440 660 1920 560" stroke="#C4956A" stroke-width="0.5" fill="none" opacity="0.08"/>
+  <path d="M0 520 Q480 420 960 520 Q1440 620 1920 520" stroke="#C4956A" stroke-width="0.5" fill="none" opacity="0.06"/>
+  <g opacity="0.15">
+    <rect x="720" y="280" width="480" height="640" rx="1" fill="none" stroke="#C4956A" stroke-width="0.5"/>
+    <line x1="720" y1="600" x2="1200" y2="600" stroke="#C4956A" stroke-width="0.3"/>
+    <line x1="960" y1="280" x2="960" y2="920" stroke="#C4956A" stroke-width="0.3"/>
+  </g>
+  <path d="M760 320 L1160 320 M760 330 L1160 330 M760 340 L1160 340" stroke="#C4956A" stroke-width="0.3" opacity="0.08"/>
+  <path d="M760 860 L1160 860 M760 870 L1160 870 M760 880 L1160 880" stroke="#C4956A" stroke-width="0.3" opacity="0.08"/>
+  <ellipse cx="960" cy="540" rx="200" ry="300" fill="none" stroke="#C4956A" stroke-width="0.5" opacity="0.06">
+    <animate attributeName="rx" values="200;220;200" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="300;320;300" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.06;0.1;0.06" dur="6s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="960" cy="540" rx="280" ry="400" fill="none" stroke="#C4956A" stroke-width="0.3" opacity="0.04">
+    <animate attributeName="rx" values="280;300;280" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="400;420;400" dur="8s" repeatCount="indefinite"/>
+  </ellipse>
+  <path d="M800 500 L960 400 L1120 500" stroke="#C4956A" stroke-width="0.5" fill="none" opacity="0.1"/>
+  <path d="M820 520 L960 430 L1100 520" stroke="#C4956A" stroke-width="0.3" fill="none" opacity="0.06"/>
+</svg>

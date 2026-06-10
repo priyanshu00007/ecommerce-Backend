@@ -5,17 +5,16 @@ import { X } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 const guestItems = [
-  { id: 'Home', to: '/', name: 'Home', img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80' },
-  { id: 'collections', to: '/shop', name: 'Collections', img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80' },
-  { id: 'craft', to: '/craft', name: 'Craft', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80' },
-  { id: 'journal', to: '/journal', name: 'Journal', img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80' },
-  // { id: 'maison', to: '/maison', name: 'Maison', img: 'https://images.unsplash.com/photo-1583241495769-2c4055d4924a?auto=format&fit=crop&q=80' },
-  { id: 'contact', to: '/contact', name: 'Contact', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80' },
+  { id: 'Home', to: '/', name: 'Home', img: '/images/hero.svg' },
+  { id: 'collections', to: '/shop', name: 'Collections', img: '/images/editorial.svg' },
+  { id: 'craft', to: '/craft', name: 'Craft', img: '/images/fabric.svg' },
+  { id: 'journal', to: '/journal', name: 'Journal', img: '/images/editorial.svg' },
+  { id: 'contact', to: '/contact', name: 'Contact', img: '/images/hero.svg' },
   { id: 'login', to: '/login', name: 'Sign In', img: '' },
 ];
 
 const adminExtra = [
-  { id: 'admin', to: '/admin', name: 'Admin', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80' },
+  { id: 'admin', to: '/admin', name: 'Admin', img: '/images/product.svg' },
   { id: 'profile', to: '/profile', name: 'Profile', img: '' },
 ];
 

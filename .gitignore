@@ -1,9 +1,5 @@
-node_modules
-dist
-build
-coverage
-*.log
-.DS_Store
+node_modules/
 .env
-.idea
-.vscode
+logs/
+uploads/
+npm-debug.log*

@@ -10,18 +10,26 @@ export function CartProvider({ children }) {
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  function normalizeItem(i) {
+    return {
+      ...i,
+      name: i.name || i.product_name || 'Product',
+      price: i.price || i.product_price || 0,
+      image_url: i.image_url || i.product_image || '/images/product.svg',
+    };
+  }
+
   const fetchCart = useCallback(async () => {
     if (!user) { setItems([]); setCount(0); return; }
     try {
       setLoading(true);
       const { data } = await cartAPI.get();
-      setItems(data);
-      setCount(data.reduce((s, i) => s + i.quantity, 0));
+      const mapped = (data || []).map(normalizeItem);
+      setItems(mapped);
+      setCount(mapped.reduce((s, i) => s + i.quantity, 0));
     } catch { setItems([]); setCount(0); }
     finally { setLoading(false); }
   }, [user]);
-
-  useEffect(() => { fetchCart(); }, [fetchCart]);
 
   const addItem = async (productId, quantity = 1) => {
     const { data } = await cartAPI.add({ product_id: productId, quantity });

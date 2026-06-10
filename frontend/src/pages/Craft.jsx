@@ -15,7 +15,7 @@ export default function Craft() {
           </div>
         </div>
         <div className="flex-1 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80" className="w-full h-full object-cover" />
+          <img src="/images/fabric.svg" className="w-full h-full object-cover" />
         </div>
       </section>
 

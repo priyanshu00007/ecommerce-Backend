@@ -45,7 +45,7 @@ export default function Wishlist() {
             {items.map((item) => (
               <div key={item.id} className="group">
                 <div className="aspect-[3/4] bg-aura-clay rounded-t-full overflow-hidden mb-4 relative">
-                  <img src={item.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <img src={item.image_url || '/images/product.svg'} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                   <button onClick={() => handleRemove(item.id)}
                     className="absolute top-4 right-4 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-md hover:bg-white transition-colors">
                     <Heart size={16} className="fill-red-500 text-red-500" />

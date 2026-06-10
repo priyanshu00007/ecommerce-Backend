@@ -49,45 +49,51 @@ function App() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen, cartOpen, searchOpen, quickView]);
 
-  if (cinemaLoading) return <CinematicLoader onComplete={() => setCinemaLoading(false)} />;
-
   return (
     <div className="min-h-screen selection:bg-[#8C9A84] selection:text-[#F9F8F4]">
-      <CustomCursor />
-      <Navbar
-        onMenu={() => setMenuOpen(true)}
-        onCart={() => setCartOpen(true)}
-        onSearch={() => setSearchOpen(true)}
-        cartCount={count}
-      />
-      <FullscreenMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} isAdmin={isAdmin} />
-      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} onSelect={(p) => { setSearchOpen(false); setQuickView(p); }} />
-      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
-      <QuickViewModal product={quickView} onClose={() => setQuickView(null)} />
+      <AnimatePresence>
+        {cinemaLoading && <CinematicLoader onComplete={() => setCinemaLoading(false)} />}
+      </AnimatePresence>
 
-      <Suspense fallback={<div className="h-screen flex items-center justify-center text-aura-primary/50 text-sm tracking-widest uppercase">Loading...</div>}>
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home openQuickView={setQuickView} />} />
-            <Route path="/shop" element={<Shop openQuickView={setQuickView} />} />
-            <Route path="/product/:id" element={<ProductDetail openQuickView={setQuickView} />} />
-            <Route path="/craft" element={<Craft />} />
-            <Route path="/journal" element={<Journal />} />
-            <Route path="/maison" element={<Maison />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/orders/:id" element={<OrderDetail />} />
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/admin/*" element={<Admin />} />
-          </Routes>
-        </AnimatePresence>
-      </Suspense>
+      {!cinemaLoading && (
+        <>
+          <CustomCursor />
+          <Navbar
+            onMenu={() => setMenuOpen(true)}
+            onCart={() => setCartOpen(true)}
+            onSearch={() => setSearchOpen(true)}
+            cartCount={count}
+          />
+          <FullscreenMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} isAdmin={isAdmin} />
+          <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} onSelect={(p) => { setSearchOpen(false); setQuickView(p); }} />
+          <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+          <QuickViewModal product={quickView} onClose={() => setQuickView(null)} />
 
-      {!isCheckout && <Footer />}
+          <Suspense fallback={<div className="h-screen flex items-center justify-center text-aura-primary/50 text-sm tracking-widest uppercase">Loading...</div>}>
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home openQuickView={setQuickView} />} />
+                <Route path="/shop" element={<Shop openQuickView={setQuickView} />} />
+                <Route path="/product/:id" element={<ProductDetail openQuickView={setQuickView} />} />
+                <Route path="/craft" element={<Craft />} />
+                <Route path="/journal" element={<Journal />} />
+                <Route path="/maison" element={<Maison />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/orders/:id" element={<OrderDetail />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/admin/*" element={<Admin />} />
+              </Routes>
+            </AnimatePresence>
+          </Suspense>
+
+          {!isCheckout && <Footer />}
+        </>
+      )}
     </div>
   );
 }

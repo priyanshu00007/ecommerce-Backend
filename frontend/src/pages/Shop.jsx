@@ -64,7 +64,7 @@ export default function Shop({ openQuickView }) {
               <motion.div key={p.id} layout initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }} className="group cursor-pointer" onClick={() => handleQuickView(p)}>
                 <div className="aspect-[3/4] bg-aura-clay overflow-hidden mb-6 relative rounded-t-full">
-                  <img src={p.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400'}
+                  <img src={p.image_url || '/images/product.svg'}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                   <div className="absolute inset-0 bg-aura-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="bg-aura-bg text-aura-primary px-6 py-3 rounded-full text-xs uppercase tracking-widest font-bold shadow-xl">Quick View</span>

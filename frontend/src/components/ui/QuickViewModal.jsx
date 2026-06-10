@@ -33,7 +33,7 @@ export default function QuickViewModal({ product, onClose }) {
             <X size={24} />
           </button>
           <div className="w-full md:w-1/2 h-[40vh] md:h-[70vh] bg-aura-clay">
-            <img src={product.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600'} alt={product.name}
+            <img src={product.image_url || '/images/product.svg'} alt={product.name}
               className="w-full h-full object-cover" />
           </div>
           <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center overflow-y-auto">

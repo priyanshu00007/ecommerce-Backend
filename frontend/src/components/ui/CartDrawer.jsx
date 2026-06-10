@@ -39,7 +39,7 @@ export default function CartDrawer({ isOpen, onClose }) {
               ) : items.map((item) => (
                 <div key={item.id} className="flex gap-6 group">
                   <div className="w-24 h-32 md:w-28 md:h-36 bg-aura-clay rounded-t-full overflow-hidden shrink-0">
-                    <img src={item.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=200'} alt={item.name}
+                    <img src={item.image_url || '/images/product.svg'} alt={item.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="flex-1 flex flex-col justify-between py-1 md:py-2">

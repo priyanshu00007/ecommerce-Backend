@@ -56,7 +56,7 @@ export default function SearchOverlay({ isOpen, onClose, onSelect }) {
                 {products.map(p => (
                   <div key={p.id} className="group cursor-pointer" onClick={() => handleSelect(p)}>
                     <div className="aspect-[3/4] overflow-hidden bg-aura-clay mb-4 rounded-2xl">
-                      <img src={p.image_url || 'https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400'} alt={p.name}
+                      <img src={p.image_url || '/images/product.svg'} alt={p.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <p className="text-[10px] uppercase tracking-widest text-aura-sage mb-1">{p.category_name || 'Collection'}</p>

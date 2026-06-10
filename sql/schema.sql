@@ -10,6 +10,18 @@ CREATE TABLE users (
   role ENUM('customer', 'admin') DEFAULT 'customer',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+  
+-- Refresh tokens table
+CREATE TABLE refresh_tokens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  token VARCHAR(500) NOT NULL,
+  expires_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  INDEX idx_token (token(255)),
+  INDEX idx_user (user_id)
+);
 
 -- Categories table
 CREATE TABLE categories (
